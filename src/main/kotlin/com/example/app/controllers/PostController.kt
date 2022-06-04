@@ -22,8 +22,16 @@ class PostController(private val postRepository: PostRepository) {
     }
 
     @PostMapping("/posts")
-    fun create(@Valid @RequestBody post: Post): Post = postRepository.save(post)
-
+    fun create(@Valid @RequestBody post: Post): ResponseEntity<Post>? {
+        val hardcodedLoggedInUserId = 1
+        post.user_id = hardcodedLoggedInUserId.toLong()
+        val newPost = postRepository.save(post)
+        return newPost.id?.let {
+            postRepository.findById(it).map { post ->
+                ResponseEntity.ok(post)
+            }.orElse(ResponseEntity.notFound().build())
+        }
+    }
 
     @PutMapping("/posts/{id}")
     fun update(@PathVariable(value = "id") postId: Long,
