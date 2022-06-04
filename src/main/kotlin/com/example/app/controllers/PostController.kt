@@ -24,6 +24,7 @@ class PostController(private val postRepository: PostRepository) {
     @PostMapping("/posts")
     fun create(@Valid @RequestBody post: Post): Post = postRepository.save(post)
 
+
     @PutMapping("/posts/{id}")
     fun update(@PathVariable(value = "id") postId: Long,
                           @Valid @RequestBody newPost: Post): ResponseEntity<Post> {

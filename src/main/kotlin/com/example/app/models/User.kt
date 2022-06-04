@@ -22,8 +22,8 @@ data class User (
 
     val last_name: String = "",
 
-
     @JsonManagedReference
-    @OneToMany()
+    @OneToMany(cascade = [(CascadeType.ALL)], orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     var posts: List<Post>?
 )
