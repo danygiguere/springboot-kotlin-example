@@ -37,7 +37,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#fea
 - install websockets/RSocket
 - When I look at this page: https://auth0.com/blog/build-and-secure-an-api-with-spring-boot/, I see 
   `fun getAll(@RequestParam(value="brandname", required = false, defaultValue = "")`, would there be a way to do the validation at that point in the request lifecycle, and in a different file ? Rather than doing the validation later at the model level. 
-
+- https://stackabuse.com/a-guide-to-jpa-with-hibernate-relationship-mapping/
 
 #### todo (nice to have)
 - figure how to reset the test db before each test (may not be required since the tests can be mocked `mockMvc.post(...`)
