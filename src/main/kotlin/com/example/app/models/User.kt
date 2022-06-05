@@ -1,5 +1,6 @@
 package com.example.app.models
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
@@ -16,6 +17,7 @@ data class User (
     val email: String = "",
 
     @get: NotBlank
+    @JsonIgnore
     val password: String = "",
 
     val firstName: String = "",
@@ -24,6 +26,6 @@ data class User (
 
     @JsonManagedReference
     @OneToMany(cascade = [(CascadeType.ALL)], orphanRemoval = true, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     var posts: List<Post>?
 )

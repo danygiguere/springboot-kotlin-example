@@ -11,7 +11,7 @@ data class Post (
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
 
-    var user_id: Long,
+    var userId: Long,
 
     @get: NotBlank(message = "{title.required}")
     @get: Size(min=2, max=50, message = "{title.size}")

@@ -30,7 +30,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#fea
 - create translation validation on post model
 
 #### todo
-- install JWT https://www.toptal.com/spring/spring-security-tutorial
+- install JWT https://scalablescripts.medium.com/kotlin-api-authentication-using-jwt-spring-boot-jwt-authentication-6e4c099e1c2
 - create a middleware https://www.baeldung.com/spring-mvc-handlerinterceptor
 - create demos for joins, db transactions
 - find a way to run the seeds when we want (with `./gradlew ...` or a groovy command maybe??, see ./command.groovy) and make sure it cannot be run in production
