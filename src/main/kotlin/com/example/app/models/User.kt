@@ -18,9 +18,9 @@ data class User (
     @get: NotBlank
     val password: String = "",
 
-    val first_name: String = "",
+    val firstName: String = "",
 
-    val last_name: String = "",
+    val lastName: String = "",
 
     @JsonManagedReference
     @OneToMany(cascade = [(CascadeType.ALL)], orphanRemoval = true, fetch = FetchType.EAGER)
