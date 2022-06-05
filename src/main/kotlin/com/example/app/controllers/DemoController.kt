@@ -36,6 +36,7 @@ class DemoController(private val userRepository: UserRepository) {
 
     @GetMapping("/test")
     fun test(): User? {
+//        return userRepository.getCredentialsByEmail("johndoe1@test.com")
         return userRepository.findByUsername("johndoe1")
     }
 }
