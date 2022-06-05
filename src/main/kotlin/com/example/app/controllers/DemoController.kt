@@ -36,6 +36,6 @@ class DemoController(private val userRepository: UserRepository) {
 
     @GetMapping("/test")
     fun test(): User? {
-        return userRepository.findByLastName("doe2")
+        return userRepository.findByUsername("johndoe1")
     }
 }
