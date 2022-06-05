@@ -46,4 +46,5 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#fea
 - split the DataSeeder file in multiple files  
 - find a place to save the secrets - like in a .env file (https://github.com/paulschwarz/spring-dotenv) (instead of having them in the .properties files)
 - validation: https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
+- security and roles https://www.marcobehler.com/guides/spring-security
 
