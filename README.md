@@ -45,5 +45,5 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#fea
 - figure how to run the tests as transactions, so the data is not commited in the db (may not be required since the tests can be mocked `mockMvc.post(...`)
 - split the DataSeeder file in multiple files  
 - find a place to save the secrets - like in a .env file (https://github.com/paulschwarz/spring-dotenv) (instead of having them in the .properties files)
-
+- validation: https://www.baeldung.com/registration-with-spring-mvc-and-spring-security
 
