@@ -7,17 +7,18 @@ import javax.validation.constraints.Null
 import javax.validation.constraints.Size
 
 @Entity
-data class Post (
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    val id: Long? = null
 
-    var userId: Long,
+    var userId: Long = 0
 
     @get: NotBlank(message = "{title.required}")
-    @get: Size(min=2, max=50, message = "{title.size}")
-    val title: String = "",
+    @get: Size(min = 2, max = 50, message = "{title.size}")
+    var title: String = ""
 
 //    @JsonBackReference
 //    @ManyToOne
 //    val user: User
-)
+}

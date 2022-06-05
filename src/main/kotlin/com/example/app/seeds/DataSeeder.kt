@@ -27,10 +27,14 @@ class DataSeeder(private val userRepository: UserRepository, private val postRep
             user2.password = "secret"
             userRepository.save(user2)
 
-            val post1 = Post(null, 1,"A title")
+            val post1 = Post()
+            post1.userId = 1
+            post1.title = "A title"
             postRepository.save(post1)
 
-            val post2 = Post(null, 2,"A title")
+            val post2 = Post()
+            post2.userId = 2
+            post2.title = "A title"
             postRepository.save(post2)
 
         } else {

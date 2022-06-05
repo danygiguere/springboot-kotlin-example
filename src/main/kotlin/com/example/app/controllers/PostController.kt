@@ -37,8 +37,8 @@ class PostController(private val postRepository: PostRepository) {
     fun update(@PathVariable(value = "id") postId: Long,
                           @Valid @RequestBody newPost: Post): ResponseEntity<Post> {
         return postRepository.findById(postId).map { post ->
-            val updatedPost: Post = post.copy(title = newPost.title)
-            ResponseEntity.ok().body(postRepository.save(updatedPost))
+            post.title = newPost.title
+            ResponseEntity.ok().body(postRepository.save(post))
         }.orElse(ResponseEntity.notFound().build())
     }
 
