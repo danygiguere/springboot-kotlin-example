@@ -2,6 +2,7 @@ package com.example.app.models
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonManagedReference
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import javax.persistence.*
 import javax.validation.constraints.NotBlank
 
@@ -21,14 +22,14 @@ class User {
     var password = ""
         @JsonIgnore
         get() = field
-//        set(value) {
-//            val passwordEncoder = BCryptPasswordEncoder()
-//            field = passwordEncoder.encode(value)
-//        }
+        set(value) {
+            val passwordEncoder = BCryptPasswordEncoder()
+            field = passwordEncoder.encode(value)
+        }
 
-//    fun comparePassword(password: String): Boolean {
-//        return BCryptPasswordEncoder().matches(password, this.password)
-//    }
+    fun comparePassword(password: String): Boolean {
+        return BCryptPasswordEncoder().matches(password, this.password)
+    }
 
     @Column
     val firstName: String = ""
