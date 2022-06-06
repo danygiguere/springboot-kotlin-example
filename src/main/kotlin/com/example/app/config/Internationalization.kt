@@ -14,7 +14,7 @@ public class Internationalization {
     var messageSource: ResourceBundleMessageSource? = null
 
     @Bean
-    fun localeResolver(): AcceptHeaderLocaleResolver? {
+    fun acceptHeaderLocaleResolver(): AcceptHeaderLocaleResolver? {
         resolver = AcceptHeaderLocaleResolver()
         resolver!!.defaultLocale = Locale.ENGLISH
         return resolver
