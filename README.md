@@ -37,8 +37,6 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#fea
 - create demos for joins, db transactions
 - find a way to run the seeds when we want (with `./gradlew ...` or a groovy command maybe??, see ./command.groovy) and make sure it cannot be run in production
 - install websockets/RSocket
-- When I look at this page: https://auth0.com/blog/build-and-secure-an-api-with-spring-boot/, I see 
-  `fun getAll(@RequestParam(value="brandname", required = false, defaultValue = "")`, would there be a way to do the validation at that point in the request lifecycle, and in a different file ? Rather than doing the validation later at the model level. 
 - https://stackabuse.com/a-guide-to-jpa-with-hibernate-relationship-mapping/
 
 #### todo (nice to have)
