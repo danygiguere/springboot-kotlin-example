@@ -13,7 +13,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
         http.cors().and().csrf().disable()
 
         http.authorizeRequests()
-            .antMatchers("/**").permitAll()
+            .antMatchers("/", "/api/register", "/api/login").permitAll()
             .anyRequest()
             .authenticated()
     }
