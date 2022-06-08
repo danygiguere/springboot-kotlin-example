@@ -25,7 +25,7 @@ public class Internationalization {
     @Bean
     fun messageSource(): ResourceBundleMessageSource? {
         messageSource = ResourceBundleMessageSource()
-        messageSource!!.setBasenames("lang/messages")
+        messageSource!!.setBasenames("messages")
         return messageSource
     }
 }
