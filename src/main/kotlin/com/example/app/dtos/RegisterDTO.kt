@@ -12,5 +12,6 @@ class RegisterDTO {
     val email = ""
 
     @Size(min = 6, max = 25, message = "{password.size}")
+    // todo validated that both passwords match
     val password = ""
 }
