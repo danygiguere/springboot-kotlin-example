@@ -23,7 +23,7 @@ public class Internationalization {
     @Bean
     fun messageSource(): ResourceBundleMessageSource? {
         messageSource = ResourceBundleMessageSource()
-        messageSource!!.setBasenames("lang/strings", "lang/validator")
+        messageSource!!.setBasenames("lang/messages", "lang/ValidationMessages")
         return messageSource
     }
 

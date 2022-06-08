@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletResponse
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api")
@@ -29,7 +30,7 @@ class AuthController(private val userRepository: UserRepository) {
     var logger: Logger = LoggerFactory.getLogger(DemoController::class.java)
 
     @PostMapping("/register")
-    fun register(@RequestBody body: RegisterDTO): ResponseEntity<User> {
+    fun register(@Valid @RequestBody body: RegisterDTO): ResponseEntity<User> {
         val user = User()
         user.username = body.username
         user.email = body.email
@@ -38,28 +39,28 @@ class AuthController(private val userRepository: UserRepository) {
         return ResponseEntity.ok(this.userRepository.save(user))
     }
 
-    @PostMapping("/login")
-    fun login(@RequestBody body: LoginDTO, response: HttpServletResponse): String {
-        val user = this.userRepository.findByEmail(body.email)
-            ?: return messageSource!!.getMessage("user_not_found", null, LocaleContextHolder.getLocale())
-
-        if (!user.comparePassword(body.password)) {
-            return messageSource!!.getMessage("invalid_password", null, LocaleContextHolder.getLocale())
-        }
-
-        val issuer = user.id.toString()
-
-        val jwt = Jwts.builder()
-            .setIssuer(issuer)
-            .setExpiration(Date(System.currentTimeMillis() + 60 * 24 * 1000)) // 1 day
-            .signWith(SignatureAlgorithm.HS512, "secret").compact()
-
-        val cookie = Cookie("jwt", jwt)
-        cookie.isHttpOnly = true
-
-        response.addCookie(cookie)
-
-        return messageSource!!.getMessage("welcome", null, LocaleContextHolder.getLocale())
-    }
+//    @PostMapping("/login")
+//    fun login(@RequestBody body: LoginDTO, response: HttpServletResponse): String {
+//        val user = this.userRepository.findByEmail(body.email)
+//            ?: return messageSource!!.getMessage("user_not_found", null, LocaleContextHolder.getLocale())
+//
+//        if (!user.comparePassword(body.password)) {
+//            return messageSource!!.getMessage("invalid_password", null, LocaleContextHolder.getLocale())
+//        }
+//
+//        val issuer = user.id.toString()
+//
+//        val jwt = Jwts.builder()
+//            .setIssuer(issuer)
+//            .setExpiration(Date(System.currentTimeMillis() + 60 * 24 * 1000)) // 1 day
+//            .signWith(SignatureAlgorithm.HS512, "secret").compact()
+//
+//        val cookie = Cookie("jwt", jwt)
+//        cookie.isHttpOnly = true
+//
+//        response.addCookie(cookie)
+//
+//        return messageSource!!.getMessage("welcome", null, LocaleContextHolder.getLocale())
+//    }
 
 }
