@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import javax.persistence.*
-import javax.validation.constraints.NotBlank
 
 @Entity
 class User {
@@ -12,13 +11,11 @@ class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Long? = null
 
-    @Column
     var username = ""
 
     @Column(unique = true)
     var email = ""
 
-    @Column
     var password = ""
         @JsonIgnore
         get() = field
@@ -31,10 +28,8 @@ class User {
         return BCryptPasswordEncoder().matches(password, this.password)
     }
 
-    @Column
     val firstName: String = ""
 
-    @Column
     val lastName: String = ""
 
     @JsonManagedReference
