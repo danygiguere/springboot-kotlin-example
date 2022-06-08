@@ -12,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.i18n.LocaleContextHolder
 import org.springframework.context.support.ResourceBundleMessageSource
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.util.*
 import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletResponse
@@ -61,6 +58,21 @@ class AuthController(private val userRepository: UserRepository) {
         response.addCookie(cookie)
 
         return messageSource!!.getMessage("welcome", null, LocaleContextHolder.getLocale())
+    }
+
+    @GetMapping("/user")
+    fun user(@CookieValue("jwt") jwt: String?): ResponseEntity<Any> {
+        try {
+            if (jwt == null) {
+                return ResponseEntity.status(401).body(messageSource!!.getMessage("unauthenticated", null, LocaleContextHolder.getLocale()))
+            }
+
+            val body = Jwts.parser().setSigningKey("secret").parseClaimsJws(jwt).body
+
+            return ResponseEntity.ok(this.userRepository.findById(body.issuer.toInt().toLong()))
+        } catch (e: Exception) {
+            return ResponseEntity.status(401).body(messageSource!!.getMessage("unauthenticated", null, LocaleContextHolder.getLocale()))
+        }
     }
 
 }

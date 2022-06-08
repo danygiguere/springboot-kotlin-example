@@ -9,8 +9,8 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
     protected override fun configure(http: HttpSecurity) {
 
-        // Enable CORS and disable CSRF
-        http.cors().and().csrf().disable()
+        // Disable CSRF
+        http.csrf().disable()
 
         http.authorizeRequests()
             .antMatchers("/", "/api/register", "/api/login").permitAll()
