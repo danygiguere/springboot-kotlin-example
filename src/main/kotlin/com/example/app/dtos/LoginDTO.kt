@@ -1,4 +1,4 @@
-package com.scalablescripts.auth.dtos
+package com.example.app.dtos
 
 class LoginDTO {
     val email = ""

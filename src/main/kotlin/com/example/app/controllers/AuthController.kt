@@ -1,9 +1,9 @@
 package com.example.app.controllers
 
+import com.example.app.dtos.LoginDTO
+import com.example.app.dtos.RegisterDTO
 import com.example.app.models.User
 import com.example.app.repositories.UserRepository
-import com.scalablescripts.auth.dtos.LoginDTO
-import com.scalablescripts.auth.dtos.RegisterDTO
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
 import org.slf4j.Logger

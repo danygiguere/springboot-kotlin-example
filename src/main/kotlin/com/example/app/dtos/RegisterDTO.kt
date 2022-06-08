@@ -1,4 +1,4 @@
-package com.scalablescripts.auth.dtos
+package com.example.app.dtos
 
 import javax.validation.constraints.Email
 import javax.validation.constraints.Size
