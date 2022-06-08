@@ -7,14 +7,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Throws(Exception::class)
-    protected override fun configure(http: HttpSecurity) {
+    override fun configure(http: HttpSecurity) {
 
         // Disable CSRF
-        http.csrf().disable()
+//        http.csrf().disable()
+        http.cors().and().csrf().disable()
 
         http.authorizeRequests()
-            .antMatchers("/", "/api/register", "/api/login").permitAll()
+            .antMatchers(
+                "/",
+                "/api/register",
+                "/api/login",
+            "/api/logout")
+            .permitAll()
             .anyRequest()
             .authenticated()
+            .and()
+            .httpBasic();
     }
 }

@@ -63,6 +63,7 @@ class AuthController(private val userRepository: UserRepository) {
     @GetMapping("/user")
     fun user(@CookieValue("jwt") jwt: String?): ResponseEntity<Any> {
         try {
+            logger.info("AuthController @/user");
             if (jwt == null) {
                 return ResponseEntity.status(401).body(messageSource!!.getMessage("unauthenticated", null, LocaleContextHolder.getLocale()))
             }
@@ -73,6 +74,16 @@ class AuthController(private val userRepository: UserRepository) {
         } catch (e: Exception) {
             return ResponseEntity.status(401).body(messageSource!!.getMessage("unauthenticated", null, LocaleContextHolder.getLocale()))
         }
+    }
+
+    @PostMapping("/logout")
+    fun logout(response: HttpServletResponse): ResponseEntity<Any> {
+        val cookie = Cookie("jwt", "")
+        cookie.maxAge = 0
+
+        response.addCookie(cookie)
+
+        return ResponseEntity.ok(messageSource!!.getMessage("logged_out", null, LocaleContextHolder.getLocale()))
     }
 
 }

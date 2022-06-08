@@ -3,6 +3,8 @@ package com.example.app.config
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.support.ResourceBundleMessageSource
+import org.springframework.validation.Validator
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver
 import java.util.*
 
@@ -23,8 +25,7 @@ public class Internationalization {
     @Bean
     fun messageSource(): ResourceBundleMessageSource? {
         messageSource = ResourceBundleMessageSource()
-        messageSource!!.setBasenames("lang/messages", "lang/ValidationMessages")
+        messageSource!!.setBasenames("lang/messages")
         return messageSource
     }
-
 }
