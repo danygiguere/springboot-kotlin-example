@@ -18,7 +18,7 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
                 "/",
                 "/api/register",
                 "/api/login",
-            "/api/logout")
+                "/api/logout")
             .permitAll()
             .anyRequest()
             .authenticated()
