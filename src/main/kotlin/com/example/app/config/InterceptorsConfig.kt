@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
 @EnableWebMvc
-class WebConfig : WebMvcConfigurer {
+class InterceptorsConfig : WebMvcConfigurer {
     override fun addInterceptors(registry: InterceptorRegistry) {
         registry.addInterceptor(LogInterceptor())
 //        registry.addInterceptor(LogInterceptor()).addPathPatterns("/**").excludePathPatterns("/admin/**")
