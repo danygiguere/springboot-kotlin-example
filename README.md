@@ -28,12 +28,15 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#fea
 - install i18n (add header `Accept-Language` : `fr` to set the locale to `fr` or `en` for english)
 - create DemoController
 - create translation validation on post model
+- create a middleware (interceptor)
 
 #### todo
+- create a custom validation rule
+- create a few test
+- create UserWithPosts to prevent n+1
 - install JWT https://scalablescripts.medium.com/kotlin-api-authentication-using-jwt-spring-boot-jwt-authentication-6e4c099e1c2
 - JWT https://github.com/scalablescripts/kotlin-auth
 - create custom validation for checking if a email is already taken in the db https://wkrzywiec.medium.com/how-to-check-if-user-exist-in-database-using-hibernate-validator-eab110429a6
-- create a middleware https://www.baeldung.com/spring-mvc-handlerinterceptor
 - create demos for joins, db transactions
 - find a way to run the seeds when we want (with `./gradlew ...` or a groovy command maybe??, see ./command.groovy) and make sure it cannot be run in production
 - install websockets/RSocket
