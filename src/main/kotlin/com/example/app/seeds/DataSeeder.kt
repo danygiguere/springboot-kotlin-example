@@ -37,8 +37,6 @@ class DataSeeder(private val userRepository: UserRepository, private val postRep
             post2.title = "A title"
             postRepository.save(post2)
 
-        } else {
-            //
         }
     }
 

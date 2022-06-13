@@ -21,10 +21,6 @@ class UserController(private val userRepository: UserRepository) {
         }.orElse(ResponseEntity.notFound().build())
     }
 
-    @PostMapping("/users")
-    @ResponseStatus(HttpStatus.CREATED)
-    fun create(@Valid @RequestBody user: User): User = userRepository.save(user)
-
     @PutMapping("/users/{id}")
     fun update(@PathVariable(value = "id") userId: Long,
                           @Valid @RequestBody newUser: User): ResponseEntity<User> {

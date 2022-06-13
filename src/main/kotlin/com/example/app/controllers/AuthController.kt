@@ -37,7 +37,7 @@ class AuthController(private val userRepository: UserRepository) {
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody body: LoginDTO, response: HttpServletResponse): String {
+    fun login(@Valid @RequestBody body: LoginDTO, response: HttpServletResponse): String {
         val user = this.userRepository.findByEmail(body.email)
             ?: return messageSource!!.getMessage("user_not_found", null, LocaleContextHolder.getLocale())
 
