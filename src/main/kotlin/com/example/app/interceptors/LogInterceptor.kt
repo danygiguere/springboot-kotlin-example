@@ -13,15 +13,15 @@ class LogInterceptor: HandlerInterceptor {
     val log = LoggerFactory.getLogger(LogInterceptor::class.java);
 
     override fun preHandle(request: HttpServletRequest, response: HttpServletResponse, dataObject: Any) : Boolean{
-        log.info("1. from PreHandle method.")
+        log.info("LogInterceptor PreHandle log")
         return true
     }
 
     override fun postHandle(request: HttpServletRequest, response: HttpServletResponse, dataObject: Any, model: ModelAndView?){
-        log.info("3. from PostHandle method.")
+        log.info("LogInterceptor PostHandle log")
     }
 
     override fun afterCompletion(request: HttpServletRequest, response: HttpServletResponse, dataObject: Any, e: Exception?) {
-        log.info("4. from AfterCompletion method - Request Completed!")
+        log.info("LogInterceptor AfterCompletion log")
     }
 }
