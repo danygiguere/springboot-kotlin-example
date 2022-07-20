@@ -1,0 +1,45 @@
+version: '3'
+
+volumes:
+  dbdata:
+    driver: local
+
+services:
+  docker_db:
+    image: mysql:5.7.22
+    container_name: docker_db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: kotlin_demo_app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - docker_db-net
+
+  app:
+    container_name: api-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://docker_db:3306/kotlin_demo_app?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    depends_on:
+      - docker_db-net
+    networks:
+      - docker_db-net
+    restart: on-failure
+
+networks:
+  docker_db-net:
+    driver: bridge
