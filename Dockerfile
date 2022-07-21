@@ -7,5 +7,12 @@ RUN gradle build --info
 FROM openjdk:17-alpine
 WORKDIR /app
 EXPOSE 8080
-COPY --from=builder /builder/build/libs/demo-0.0.1-SNAPSHOT.jar .
-CMD ["java", "-jar", "demo-0.0.1-SNAPSHOT.jar"]
+COPY --from=builder /builder/build/libs/app-0.0.1-SNAPSHOT.jar .
+CMD ["java", "-jar", "app-0.0.1-SNAPSHOT.jar"]
+
+
+#FROM openjdk:17-alpine
+#WORKDIR /app
+#EXPOSE 8080
+#ADD ./build/libs/app-0.0.1-SNAPSHOT.jar .
+#CMD ["java", "-jar", "app-0.0.1-SNAPSHOT.jar"]
