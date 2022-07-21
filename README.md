@@ -5,8 +5,8 @@
 - just a project to learn Spring with Kotlin
 
 ### Installation
-- add your db credentials to application.properties
-- run the project with `./gradlew bootRun`
+- add your db credentials to application.properties and docker-compose.yml
+- run the project with docker-compose up or locally with `./gradlew bootRun`
 
 ### sources of information
 - https://www.callicoder.com/kotlin-spring-boot-mysql-jpa-hibernate-rest-api-tutorial/
