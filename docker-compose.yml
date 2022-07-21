@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   app:
@@ -15,4 +15,4 @@ services:
 networks:
   default:
     external:
-      name: docker_db_docker_db-network
+      name: docker_db_network
