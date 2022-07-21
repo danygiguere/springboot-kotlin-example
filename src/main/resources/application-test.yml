@@ -9,7 +9,7 @@ logging:
 spring:
   datasource:
     username: root
-    url: jdbc:mysql://localhost:3306/docker_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/docker_db_test?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
     password: root
   jpa:
     properties:
